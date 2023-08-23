@@ -1,0 +1,169 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+    padding: 0 px;
+    margin: 0 px;
+}
+
+.layoutDashboard {
+    width: 97%;
+}
+
+/* Calendar.css */
+
+.calendar-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f7fafc;
+  }
+  
+  .calendar {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+    box-shadow: 6px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    padding: 2rem;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  
+  .header button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #718096;
+    transition: color 0.3s;
+  }
+  
+  .header button:hover {
+    color: #4a90e2;
+  }
+  
+  .month-year {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2d3748;
+  }
+  
+  .days-of-week {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .day-of-week {
+    text-align: center;
+    padding: 0.5rem 0;
+    color: #718096;
+  }
+  
+  .days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+  }
+  
+  .day {
+    background-color: #edf2f7;
+    border-radius: 0.25rem;
+    padding: 0.75rem;
+    text-align: center;
+    transition: background-color 0.3s;
+    cursor: pointer;
+  }
+  
+  .day:hover {
+    background-color: #e2e8f0;
+  }
+  
+  .empty {
+    visibility: hidden;
+  }
+  
+
+/* Popup.css */
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .popup {
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    width: 80%;
+    max-width: 400px;
+  }
+  
+  .popup h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  
+  .input-container {
+    margin-bottom: 1rem;
+  }
+  
+  .input-container label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-weight: bold;
+  }
+  
+  .input-container input,
+  .input-container select,
+  .input-container textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+  }
+  
+  .save-button,
+  .cancel-button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+  }
+  
+  .save-button {
+    background-color: #4a90e2;
+    color: #ffffff;
+    margin-right: 0.5rem;
+  }
+  
+  .cancel-button {
+    background-color: #e2e8f0;
+    color: #2d3748;
+  }
+
