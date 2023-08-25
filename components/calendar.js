@@ -17,7 +17,22 @@ export default function Calendar() {
       setSelectedDate(date)
       setIsPopupOpen(true); // Abra o pop-up ao clicar em um dia específico
     }
+<<<<<<< HEAD
+<<<<<<< HEAD
   };   
+=======
+=======
+>>>>>>> parent of b84a17e (ult-commit)
+    console.log(date)
+  }; 
+
+  const handleClosePopup = (data) => {
+    setIsPopupOpen(false); // Feche o pop-up
+    if (data) {
+      console.log("dados da consulta", data)
+    }
+  };
+>>>>>>> parent of b84a17e (ult-commit)
 
   const prevMonth = () => {
     const newDate = new Date(currentDate);
