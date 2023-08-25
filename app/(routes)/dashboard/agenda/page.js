@@ -30,6 +30,7 @@ export default function Agenda() {
         <div className="w-full">
             <div className="w-full flex flex-col items-center justify-center p-5">
                 <h1 className="text-5xl m-8 hover:border-b-2 cursor-pointer hover:border-[#1F4D36]">Minha Agenda</h1>
+<<<<<<< HEAD
                 <Calendar onDataSelect={handleSelectedDate} ></Calendar>
                 <Popup addConsult={addConsult} selectedDate={selectedDate}></Popup>
                 <div className="w-full flex flex-col items-center justify-center mt-10">
@@ -47,6 +48,10 @@ export default function Agenda() {
                         )}
                     </div>
                 </div>
+=======
+                <Calendar></Calendar>
+                <ConsultList></ConsultList>
+>>>>>>> parent of b84a17e (ult-commit)
             </div>
         </div>
     )
