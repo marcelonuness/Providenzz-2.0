@@ -2,7 +2,11 @@
 import { useState } from 'react';
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 export default function Popup({ addConsult, selectedDate, setSelectedDate, closePopUp }) {
+=======
+export default function Popup({ onClose, dia }) {
+>>>>>>> parent of b84a17e (ult-commit)
 =======
 export default function Popup({ onClose, dia }) {
 >>>>>>> parent of b84a17e (ult-commit)
@@ -22,8 +26,13 @@ export default function Popup({ onClose, dia }) {
 
   return (
 <<<<<<< HEAD
+<<<<<<< HEAD
     <div id='popupAgendamento' className="popup-overlay" onSubmit={handleSubmit}>
       <form className="popup" onClick={e => e.stopPropagation()}>
+=======
+    <div id='popupAgendamento' className="popup-overlay" onClick={handleClose}>
+      <div className="popup" onClick={e => e.stopPropagation()}>
+>>>>>>> parent of b84a17e (ult-commit)
 =======
     <div id='popupAgendamento' className="popup-overlay" onClick={handleClose}>
       <div className="popup" onClick={e => e.stopPropagation()}>

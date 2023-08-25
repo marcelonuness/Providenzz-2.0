@@ -18,8 +18,11 @@ export default function Calendar() {
       setIsPopupOpen(true); // Abra o pop-up ao clicar em um dia específico
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
   };   
 =======
+=======
+>>>>>>> parent of b84a17e (ult-commit)
     console.log(date)
   }; 
 
