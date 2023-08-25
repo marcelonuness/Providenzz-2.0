@@ -1,7 +1,7 @@
 "use client"
 import { useState } from 'react';
 
-export default function Popup({ onClose, dia }) {
+export default function Popup({ onClose }) {
   const [patientName, setPatientName] = useState('');
   const [selectedDate, setSelectedDate] = useState('');
   const [duration, setDuration] = useState('15 min');
@@ -27,7 +27,7 @@ export default function Popup({ onClose, dia }) {
 
   return (
     <div id='popupAgendamento' className="popup-overlay" onClick={handleClose}>
-      <div className="popup" onClick={e => e.stopPropagation()}>
+      <form className="popup" onClick={e => e.stopPropagation()}>
         <h2>Agendar Consulta</h2>
         <div className="input-container">
           <label>Nome do Paciente</label>
@@ -68,7 +68,7 @@ export default function Popup({ onClose, dia }) {
             Cancelar
           </button>
         </div>
-      </div>
+      </form>
     </div>
   );
 };

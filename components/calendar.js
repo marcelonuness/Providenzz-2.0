@@ -18,7 +18,6 @@ export default function Calendar() {
       setSelectedDate(date)
       setIsPopupOpen(true); // Abra o pop-up ao clicar em um dia específico
     }
-    console.log(date)
   }; 
 
   const handleClosePopup = (data) => {
