@@ -2,8 +2,10 @@ import './globals.css'
 import { Red_Hat_Display } from 'next/font/google'
 import SideBar from "@/components/sideBar.js"
 import HeaderDashboard from '@/components/headerDashboard'
+import Head from 'next/head'
 
 const redHatDisplay = Red_Hat_Display({ subsets: ['latin'] })
+
 
 export const metadata = {
   title: 'Providenzz - Dashboard',
@@ -13,7 +15,11 @@ export const metadata = {
 export default function DashboardLayout({ children }) {
   return (
       <html lang="en">
-        <body className={`${redHatDisplay.className}`}>               
+        
+        <body className={`${redHatDisplay.className}`}> 
+        
+        
+                     
           <div className="h-screen flex flex-col">
                 <div className="flex flex-1">
                     <div className='fixed'>

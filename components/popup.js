@@ -1,33 +1,42 @@
 "use client"
 import { useState } from 'react';
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+export default function Popup({ addConsult, selectedDate, setSelectedDate, closePopUp }) {
+=======
 export default function Popup({ onClose, dia }) {
+>>>>>>> parent of b84a17e (ult-commit)
+=======
+export default function Popup({ onClose, dia }) {
+>>>>>>> parent of b84a17e (ult-commit)
   const [patientName, setPatientName] = useState('');
-  const [selectedDate, setSelectedDate] = useState('');
   const [duration, setDuration] = useState('15 min');
   const [description, setDescription] = useState('');
 
-  const handleSave = () => {
-    const appointmentData = {
-      patientName,
-      selectedDate,
-      duration,
-      description
-    };
-
-    // Aqui você pode fazer algo com os dados da consulta, como enviá-los para um servidor ou armazená-los no estado do componente pai
-
-    // Feche o pop-up após salvar
-    onClose(appointmentData);
+  const handleSubmit = (e) => {
+    
+    e.preventDefault()
+    const newConsult = { nome, data: selectedDate, duration, description }
+    addConsult(newConsult)
+    setPatientName("")
+    setDuration("")
+    setDescription("")   
   };
 
-  const handleClose = () => {
-    onClose()
-  }
-
   return (
+<<<<<<< HEAD
+<<<<<<< HEAD
+    <div id='popupAgendamento' className="popup-overlay" onSubmit={handleSubmit}>
+      <form className="popup" onClick={e => e.stopPropagation()}>
+=======
     <div id='popupAgendamento' className="popup-overlay" onClick={handleClose}>
       <div className="popup" onClick={e => e.stopPropagation()}>
+>>>>>>> parent of b84a17e (ult-commit)
+=======
+    <div id='popupAgendamento' className="popup-overlay" onClick={handleClose}>
+      <div className="popup" onClick={e => e.stopPropagation()}>
+>>>>>>> parent of b84a17e (ult-commit)
         <h2>Agendar Consulta</h2>
         <div className="input-container">
           <label>Nome do Paciente</label>
@@ -61,10 +70,10 @@ export default function Popup({ onClose, dia }) {
           />
         </div>
         <div className="button-container">
-          <button className="save-button" onClick={handleSave}>
+          <button className="save-button" onClick={handleSubmit}>
             Salvar
           </button>
-          <button className="cancel-button" onClick={onClose}>
+          <button className="cancel-button" onClick={closePopUp}>
             Cancelar
           </button>
         </div>
