@@ -1,32 +1,23 @@
 "use client"
 import { useState } from 'react';
 
-export default function Popup({ onClose }) {
+export default function Popup({ addConsult, selectedDate, setSelectedDate, closePopUp }) {
   const [patientName, setPatientName] = useState('');
-  const [selectedDate, setSelectedDate] = useState('');
   const [duration, setDuration] = useState('15 min');
   const [description, setDescription] = useState('');
 
-  const handleSave = () => {
-    const appointmentData = {
-      patientName,
-      selectedDate,
-      duration,
-      description
-    };
-
-    // Aqui você pode fazer algo com os dados da consulta, como enviá-los para um servidor ou armazená-los no estado do componente pai
-
-    // Feche o pop-up após salvar
-    onClose(appointmentData);
+  const handleSubmit = (e) => {
+    
+    e.preventDefault()
+    const newConsult = { nome, data: selectedDate, duration, description }
+    addConsult(newConsult)
+    setPatientName("")
+    setDuration("")
+    setDescription("")   
   };
 
-  const handleClose = () => {
-    onClose()
-  }
-
   return (
-    <div id='popupAgendamento' className="popup-overlay" onClick={handleClose}>
+    <div id='popupAgendamento' className="popup-overlay" onSubmit={handleSubmit}>
       <form className="popup" onClick={e => e.stopPropagation()}>
         <h2>Agendar Consulta</h2>
         <div className="input-container">
@@ -61,10 +52,10 @@ export default function Popup({ onClose }) {
           />
         </div>
         <div className="button-container">
-          <button className="save-button" onClick={handleSave}>
+          <button className="save-button" onClick={handleSubmit}>
             Salvar
           </button>
-          <button className="cancel-button" onClick={onClose}>
+          <button className="cancel-button" onClick={closePopUp}>
             Cancelar
           </button>
         </div>
