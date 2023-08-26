@@ -92,7 +92,7 @@ export default function SideBar() {
                         </Link>                       
                         
                             
-                            <li className={`rounded-md cursor-pointer h-[35px] hover:bg-white hover:text-[#1F4D36] flex items-center sm:mt-24 max-md:mt-56 p-1 my-2`}>
+                            <li className={`rounded-md cursor-pointer h-[35px] hover:bg-white hover:text-[#1F4D36] flex items-center min-lg:mt-24 xl:mt-56 p-1 my-2`}>
                                 
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
   <path strokeLinecap="round" strokeLinejoin="round" d="M5.636 5.636a9 9 0 1012.728 0M12 3v9" />
