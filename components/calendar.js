@@ -1,6 +1,5 @@
 "use client"
 import { useState } from 'react';
-import Popup from "./popup.js"
 
 export default function Calendar() {
   const daysOfWeek = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
@@ -10,14 +9,20 @@ export default function Calendar() {
   ];
 
   const [currentDate, setCurrentDate] = useState(new Date());
-  const [isPopupOpen, setIsPopupOpen] = useState(false); // Estado para controlar se o pop-up está aberto
   const [selectedDate, setSelectedDate] = useState(null)
+  
 
    const handleDayClick = (date) => {
     if (date) {
       setSelectedDate(date)
       setIsPopupOpen(true); // Abra o pop-up ao clicar em um dia específico
     }
+<<<<<<< HEAD
+<<<<<<< HEAD
+  };   
+=======
+=======
+>>>>>>> parent of b84a17e (ult-commit)
     console.log(date)
   }; 
 
@@ -27,6 +32,7 @@ export default function Calendar() {
       console.log("dados da consulta", data)
     }
   };
+>>>>>>> parent of b84a17e (ult-commit)
 
   const prevMonth = () => {
     const newDate = new Date(currentDate);
@@ -81,7 +87,6 @@ export default function Calendar() {
         ))}
       </div>
       <div className="days">{renderDays()}</div>
-      {isPopupOpen && <Popup selectedDate={selectedDate} onClose={handleClosePopup} />}
     </div>
   );
 };
