@@ -1,42 +1,39 @@
 "use client"
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-export default function Popup({ addConsult, selectedDate, setSelectedDate, closePopUp }) {
-=======
-export default function Popup({ onClose, dia }) {
->>>>>>> parent of b84a17e (ult-commit)
-=======
-export default function Popup({ onClose, dia }) {
->>>>>>> parent of b84a17e (ult-commit)
+export default function PopUp ({ selectedDate, onClose }) {
   const [patientName, setPatientName] = useState('');
+  const [dataPopUp, setDataPopUp] = useState("")
   const [duration, setDuration] = useState('15 min');
   const [description, setDescription] = useState('');
 
-  const handleSubmit = (e) => {
-    
-    e.preventDefault()
-    const newConsult = { nome, data: selectedDate, duration, description }
-    addConsult(newConsult)
-    setPatientName("")
-    setDuration("")
-    setDescription("")   
-  };
+  useEffect(() => {
+    if (selectedDate) {
+      // Formate a data para preencher o input do tipo "date"
+      const formattedDate = selectedDate.toISOString().split('T')[0];
+      setDataPopUp(formattedDate);
+    }
+  }, [selectedDate]);
+
+  const handleSave = () => {
+    const appointmentData = {
+      patientName,
+      selectedDate: dataPopUp,
+      duration,
+      description
+    };
+    onClose(appointmentData)
+    console.log(appointmentData)
+};
+
+const handleClose = () => {
+  setDataPopUp("")
+  onClose(); 
+};
 
   return (
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <div id='popupAgendamento' className="popup-overlay" onSubmit={handleSubmit}>
-      <form className="popup" onClick={e => e.stopPropagation()}>
-=======
-    <div id='popupAgendamento' className="popup-overlay" onClick={handleClose}>
+    <div className="popup-overlay" onClick={handleClose}>
       <div className="popup" onClick={e => e.stopPropagation()}>
->>>>>>> parent of b84a17e (ult-commit)
-=======
-    <div id='popupAgendamento' className="popup-overlay" onClick={handleClose}>
-      <div className="popup" onClick={e => e.stopPropagation()}>
->>>>>>> parent of b84a17e (ult-commit)
         <h2>Agendar Consulta</h2>
         <div className="input-container">
           <label>Nome do Paciente</label>
@@ -50,8 +47,8 @@ export default function Popup({ onClose, dia }) {
           <label>Dia</label>
           <input
             type="date"
-            value={selectedDate}
-            onChange={e => setSelectedDate(e.target.value)}
+            value={dataPopUp}
+            onChange={(e) => setDataPopUp(e.target.value)}
           />
         </div>
         <div className="input-container">
@@ -70,10 +67,10 @@ export default function Popup({ onClose, dia }) {
           />
         </div>
         <div className="button-container">
-          <button className="save-button" onClick={handleSubmit}>
+          <button className="save-button" onClick={handleSave}>
             Salvar
           </button>
-          <button className="cancel-button" onClick={closePopUp}>
+          <button className="cancel-button" onClick={handleClose}>
             Cancelar
           </button>
         </div>

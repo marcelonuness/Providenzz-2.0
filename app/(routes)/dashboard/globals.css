@@ -14,85 +14,86 @@ html, body {
 /* Calendar.css */
 
 .calendar-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f7fafc;
-  }
-  
-  .calendar {
-    font-family: Arial, sans-serif;
-    background-color: #ffffff;
-    border-radius: 0.5rem;
-    box-shadow: 6px 6px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 800px;
-    padding: 2rem;
-  }
-  
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
-  }
-  
-  .header button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    font-size: 1.5rem;
-    color: #718096;
-    transition: color 0.3s;
-  }
-  
-  .header button:hover {
-    color: #4a90e2;
-  }
-  
-  .month-year {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #2d3748;
-  }
-  
-  .days-of-week {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    font-weight: bold;
-    margin-bottom: 1rem;
-  }
-  
-  .day-of-week {
-    text-align: center;
-    padding: 0.5rem 0;
-    color: #718096;
-  }
-  
-  .days {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 0.5rem;
-  }
-  
-  .day {
-    background-color: #edf2f7;
-    border-radius: 0.25rem;
-    padding: 0.75rem;
-    text-align: center;
-    transition: background-color 0.3s;
-    cursor: pointer;
-  }
-  
-  .day:hover {
-    background-color: #e2e8f0;
-  }
-  
-  .empty {
-    visibility: hidden;
-  }
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f7fafc;
+}
+
+.calendar {
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 800px;
+  padding: 2rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.header button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #718096;
+  transition: color 0.3s;
+}
+
+.header button:hover {
+  color: #4a90e2;
+}
+
+.month-year {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2d3748;
+}
+
+.days-of-week {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.day-of-week {
+  text-align: center;
+  padding: 0.5rem 0;
+  color: #718096;
+}
+
+.days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+}
+
+.day {
+  background-color: #edf2f7;
+  border-radius: 0.25rem;
+  padding: 0.75rem;
+  text-align: center;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+.day:hover {
+  background-color: #e2e8f0;
+}
+
+.empty {
+  visibility: hidden;
+}
+
   
 
 /* Popup.css */
