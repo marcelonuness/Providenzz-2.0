@@ -5,58 +5,58 @@ import PopUp from "@/components/popup"
 
 
 export default function Calendar() {
-  const daysOfWeek = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+  const daysOfWeek = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb']
   const months = [
     'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
     'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
-  ];
+  ]
 
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(null);
-  const [currentDate, setCurrentDate] = useState(new Date());
+  const [isPopupOpen, setIsPopupOpen] = useState(false)
+  const [selectedDate, setSelectedDate] = useState(null)
+  const [currentDate, setCurrentDate] = useState(new Date())
 
   const prevMonth = () => {
-    const newDate = new Date(currentDate);
-    newDate.setMonth(newDate.getMonth() - 1);
+    const newDate = new Date(currentDate)
+    newDate.setMonth(newDate.getMonth() - 1)
     setCurrentDate(newDate);
-  };
+  }
 
   const nextMonth = () => {
-    const newDate = new Date(currentDate);
-    newDate.setMonth(newDate.getMonth() + 1);
-    setCurrentDate(newDate);
-  };
+    const newDate = new Date(currentDate)
+    newDate.setMonth(newDate.getMonth() + 1)
+    setCurrentDate(newDate)
+  }
 
 
   const handleDayClick = (date) => {
-    setIsPopupOpen(true);
+    setIsPopupOpen(true)
     setSelectedDate(date) 
-  };
+  }
 
   const handleClosePopup = () => {
-    setIsPopupOpen(false); 
-  };
+    setIsPopupOpen(false)
+  }
 
 
   const daysInMonth = new Date(
     currentDate.getFullYear(),
     currentDate.getMonth() + 1,
     0
-  ).getDate();
+  ).getDate()
 
   const firstDayOfMonth = new Date(
     currentDate.getFullYear(),
     currentDate.getMonth(),
     1
-  ).getDay();
+  ).getDay()
 
   const renderDays = () => {
-    const days = [];
+    const days = []
     for (let i = 0; i < firstDayOfMonth; i++) {
-      days.push(<div className="day empty" key={`empty-${i}`}></div>);
+      days.push(<div className="day empty" key={`empty-${i}`}></div>)
     }
     for (let i = 1; i <= daysInMonth; i++) {
-      const date = new Date(currentDate.getFullYear(), currentDate.getMonth(), i);
+      const date = new Date(currentDate.getFullYear(), currentDate.getMonth(), i)
       days.push(
         <div
           className="day"
@@ -67,8 +67,8 @@ export default function Calendar() {
         </div>
       );
     }
-    return days;
-  };
+    return days
+  }
 
 
   return (
@@ -91,5 +91,5 @@ export default function Calendar() {
       </div>
       {isPopupOpen && <PopUp selectedDate={selectedDate} onClose={handleClosePopup} />}
     </section>
-  );
-};
+  )
+}
