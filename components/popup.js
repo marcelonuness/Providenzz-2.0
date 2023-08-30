@@ -1,19 +1,18 @@
 "use client"
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react"
 
 export default function PopUp ({ selectedDate, onClose }) {
-  const [patientName, setPatientName] = useState('');
+  const [patientName, setPatientName] = useState("")
   const [dataPopUp, setDataPopUp] = useState("")
-  const [duration, setDuration] = useState('15 min');
-  const [description, setDescription] = useState('');
+  const [duration, setDuration] = useState("15 min")
+  const [description, setDescription] = useState("")
 
   useEffect(() => {
     if (selectedDate) {
-      // Formate a data para preencher o input do tipo "date"
-      const formattedDate = selectedDate.toISOString().split('T')[0];
-      setDataPopUp(formattedDate);
+      const formattedDate = selectedDate.toISOString().split('T')[0]
+      setDataPopUp(formattedDate)
     }
-  }, [selectedDate]);
+  }, [selectedDate])
 
   const handleSave = () => {
     const appointmentData = {
@@ -23,12 +22,11 @@ export default function PopUp ({ selectedDate, onClose }) {
       description
     };
     onClose(appointmentData)
-    console.log(appointmentData)
 };
 
 const handleClose = () => {
   setDataPopUp("")
-  onClose(); 
+  onClose()
 };
 
   return (
@@ -76,5 +74,5 @@ const handleClose = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
