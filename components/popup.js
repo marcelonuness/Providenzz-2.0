@@ -1,7 +1,9 @@
 "use client"
+
 import { useState, useEffect } from "react"
 
 export default function PopUp ({ selectedDate, onClose }) {
+
   const [patientName, setPatientName] = useState("")
   const [dataPopUp, setDataPopUp] = useState("")
   const [duration, setDuration] = useState("15 min")
@@ -14,7 +16,7 @@ export default function PopUp ({ selectedDate, onClose }) {
     }
   }, [selectedDate])
 
-  const handleSave = () => {
+  async function handleAddConsult() {
     const appointmentData = {
       patientName,
       selectedDate: dataPopUp,
@@ -22,7 +24,8 @@ export default function PopUp ({ selectedDate, onClose }) {
       description
     };
     onClose(appointmentData)
-};
+  }
+
 
 const handleClose = () => {
   setDataPopUp("")
@@ -65,7 +68,7 @@ const handleClose = () => {
           />
         </div>
         <div className="button-container">
-          <button className="save-button" onClick={handleSave}>
+          <button className="save-button" onClick={handleAddConsult}>
             Salvar
           </button>
           <button className="cancel-button" onClick={handleClose}>
