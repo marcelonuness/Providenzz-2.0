@@ -1,15 +1,14 @@
 "use client"
-import { PrismaClient } from '@prisma/client';
 import { useState, useEffect } from "react"
 
 export default function PopUp ({ selectedDate, onClose }) {
   
   const [patientName, setPatientName] = useState("")
+  const [doctorName, setDoctorName] = useState("")
   const [dataPopUp, setDataPopUp] = useState("")
   const [duration, setDuration] = useState("15 min")
   const [description, setDescription] = useState("")
-  
-  const prisma = new PrismaClient();
+
 
   useEffect(() => {
     if (selectedDate) {
@@ -18,23 +17,28 @@ export default function PopUp ({ selectedDate, onClose }) {
     }
   }, [selectedDate])
 
-  const handleAddConsult = async () => {
-    try {
-      const appointmentData = {
+  async function handleAddConsult(event) {
+    event.preventDefault()
+ 
+    const formData = new FormData(event.target)
+    const response = await fetch('/api/submit', {
+      method: 'POST',
+      body: formData,
+    })
+ 
+    const data = await response.json()
+    console.log(data)
+    // ...
+      /* const appointmentData = {
         patientName,
+        doctorName,
         selectedDate: dataPopUp,
         duration,
         description
       };
-
-      const createdAppointment = await prisma.appointment.create({
-        data: appointmentData,
-      })
-      console.log("consulta criada:", createdAppointment)
-      onClose(appointmentData)
-    } catch (error) {
-      console.log("erro ao salvar sua consulta:", error)
-    }
+      
+      onClose(appointmentData) */
+      
   }
 
 
@@ -44,7 +48,8 @@ const handleClose = () => {
 };
 
   return (
-    <div className="popup-overlay" onClick={handleClose}>
+    <form onSubmit={handleAddConsult}>
+      <div className="popup-overlay" onClick={handleClose}>
       <div className="popup" onClick={e => e.stopPropagation()}>
         <h2>Agendar Consulta</h2>
         <div className="input-container">
@@ -53,6 +58,14 @@ const handleClose = () => {
             type="text"
             value={patientName}
             onChange={e => setPatientName(e.target.value)}
+          />
+        </div>
+        <div className="input-container">
+          <label>Nome do Médico</label>
+          <input
+            type="text"
+            value={doctorName}
+            onChange={e => setDoctorName(e.target.value)}
           />
         </div>
         <div className="input-container">
@@ -79,7 +92,7 @@ const handleClose = () => {
           />
         </div>
         <div className="button-container">
-          <button className="save-button" onClick={handleAddConsult}>
+          <button className="save-button" type="submit">
             Salvar
           </button>
           <button className="cancel-button" onClick={handleClose}>
@@ -88,5 +101,7 @@ const handleClose = () => {
         </div>
       </div>
     </div>
+    </form>
+    
   )
 }

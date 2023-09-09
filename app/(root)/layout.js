@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
   return (
       <html lang="en">
         
-        <body className={`${redHatDisplay.className}`}> 
+        <body className={`${redHatDisplay.className} h-screen w-full`}> 
             {children}           
         </body>
       </html>

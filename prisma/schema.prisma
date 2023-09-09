@@ -10,40 +10,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Medico {
-  id             String         @id @default(uuid())
-  nome           String
-  especialidade  String
-  secretarias    Secretaria[] @relation("SecretariaParaMedico")
-  consultas      Consulta[]  @relation("MedicoParaConsulta")
-  pacientes      Paciente[]  @relation("PacienteParaMedico")
-}
-
-model Secretaria {
-  id         String         @id @default(uuid())
-  nome       String
-  consultas  Consulta[]  @relation("SecretariaParaConsulta")
-  medico     Medico?     @relation("SecretariaParaMedico", fields: [medicoId], references: [id])
-  medicoId   String?
-}
-
-model Paciente {
-  id         String         @id @default(uuid())
-  nome       String
-  consultas  Consulta[]  @relation("PacienteParaConsulta")
-  medico     Medico?     @relation("PacienteParaMedico", fields: [medicoId], references: [id])
-  medicoId   String?
-}
-
-model Consulta {
-  id           String         @id @default(uuid())
-  data         DateTime
-  medico       Medico      @relation("MedicoParaConsulta", fields: [medicoId], references: [id])
-  medicoId     String
-  paciente     Paciente    @relation("PacienteParaConsulta", fields: [pacienteId], references: [id])
-  pacienteId   String
-  secretaria   Secretaria? @relation("SecretariaParaConsulta", fields: [secretariaId], references: [id])
-  secretariaId String?
-  criadoEm     DateTime @default(now())
-  AtualizadoEm DateTime @updatedAt
+model Consultation {
+  id            Int      @id @default(autoincrement())
+  patientName   String
+  doctorName    String
+  selectedDate  String
+  duration      String
+  description   String?
 }

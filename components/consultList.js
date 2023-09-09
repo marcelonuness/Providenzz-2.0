@@ -1,39 +1,22 @@
-"use client"
-import { useEffect, useState } from 'react';
-import { PrismaClient } from '@prisma/client';
+import Consults from "./consults"
 
-export default function ConsultList() {
-    const [appointments, setAppointments] = useState([]);
+async function getConsults() {
+  const res = await fetch("http://localhost:3000/api/consult", {
+    cache: "no-store"
+  })
 
-    const prisma = new PrismaClient();
-    useEffect(() => {
-        const fetchAppointments = async () => {
-          try {
-            const fetchedAppointments = await prisma.appointment.findMany();
-            setAppointments(fetchedAppointments);
-          } catch (error) {
-            console.error('Erro ao buscar as consultas:', error);
-          }
-        };
-    
-        fetchAppointments();
-      }, []);
-    
+  if(!res.ok) {
+    throw new Error("deu erro :(")
+  }
+  return res.json()
+}
+
+
+export default async function ConsultList() {
+    const data = await getConsults()
     return(
-        <div className="w-full flex flex-col items-center justify-center mt-10">
-            <h1 className="text-2xl cursor-pointer font-semibold mb-7 hover:border-b-2 hover:border-[#1F4D36]">Consultas Agendadas:</h1>
-            <div className="w-full shadow-inner p-5">
-            <ul>
-                {appointments.map((appointment) => (
-                <li key={appointment.id}>
-                    <strong>Paciente:</strong> {appointment.patientName},{' '}
-                    <strong>Data:</strong> {appointment.selectedDate.toString()},{' '}
-                    <strong>Duração:</strong> {appointment.duration},{' '}
-                    <strong>Descrição:</strong> {appointment.description}
-                </li>
-                ))}
-            </ul>
-            </div>
-        </div>
+      <div>
+        <Consults data={data} />
+      </div>
     )
 }
