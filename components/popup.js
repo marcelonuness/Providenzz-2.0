@@ -1,13 +1,15 @@
 "use client"
-
+import { PrismaClient } from '@prisma/client';
 import { useState, useEffect } from "react"
 
 export default function PopUp ({ selectedDate, onClose }) {
-
+  
   const [patientName, setPatientName] = useState("")
   const [dataPopUp, setDataPopUp] = useState("")
   const [duration, setDuration] = useState("15 min")
   const [description, setDescription] = useState("")
+  
+  const prisma = new PrismaClient();
 
   useEffect(() => {
     if (selectedDate) {
@@ -16,14 +18,23 @@ export default function PopUp ({ selectedDate, onClose }) {
     }
   }, [selectedDate])
 
-  async function handleAddConsult() {
-    const appointmentData = {
-      patientName,
-      selectedDate: dataPopUp,
-      duration,
-      description
-    };
-    onClose(appointmentData)
+  const handleAddConsult = async () => {
+    try {
+      const appointmentData = {
+        patientName,
+        selectedDate: dataPopUp,
+        duration,
+        description
+      };
+
+      const createdAppointment = await prisma.appointment.create({
+        data: appointmentData,
+      })
+      console.log("consulta criada:", createdAppointment)
+      onClose(appointmentData)
+    } catch (error) {
+      console.log("erro ao salvar sua consulta:", error)
+    }
   }
 
 
